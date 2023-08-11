@@ -3,15 +3,6 @@
 local default_plugins = {
 
   "nvim-lua/plenary.nvim",
-	{
-		'stevearc/oil.nvim',
-		opts = {},
-		-- Optional dependencies
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-	},
-
-  -- nvchad plugins
-  { "NvChad/extensions", branch = "v2.0" },
 
   {
     "NvChad/base46",
@@ -25,9 +16,6 @@ local default_plugins = {
     "NvChad/ui",
     branch = "v2.0",
     lazy = false,
-    config = function()
-      require "nvchad_ui"
-    end,
   },
 
   {
@@ -59,7 +47,7 @@ local default_plugins = {
   {
     "nvim-tree/nvim-web-devicons",
     opts = function()
-      return { override = require("nvchad_ui.icons").devicons }
+      return { override = require "nvchad.icons.devicons" }
     end,
     config = function(_, opts)
       dofile(vim.g.base46_cache .. "devicons")
@@ -154,7 +142,6 @@ local default_plugins = {
     end,
     config = function()
       require "plugins.configs.lspconfig"
-      require "custom.configs.lspconfig"
     end,
   },
 
@@ -237,13 +224,11 @@ local default_plugins = {
     config = function(_, opts)
       dofile(vim.g.base46_cache .. "nvimtree")
       require("nvim-tree").setup(opts)
-      vim.g.nvimtree_side = opts.view.side
     end,
   },
 
   {
     "nvim-telescope/telescope.nvim",
-		lazy = false,
     dependencies = "nvim-treesitter/nvim-treesitter",
     cmd = "Telescope",
     init = function()
@@ -276,9 +261,6 @@ local default_plugins = {
       require("which-key").setup(opts)
     end,
   },
-	{ "junegunn/fzf", run = "./install --all", lazy = false },
-  { "junegunn/fzf.vim",  lazy = false },
-  { "brooth/far.vim",  lazy = false },
 }
 
 local config = require("core.utils").load_config()
