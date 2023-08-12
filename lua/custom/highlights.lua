@@ -16,6 +16,9 @@ M.override = {
 	},
 	Directory = {
 		underline = true
+	},
+	MatchParen = {
+		bold = true
 	}
 }
 
