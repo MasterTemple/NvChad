@@ -8,10 +8,14 @@ local M = {}
 M.override = {
   Comment = {
     italic = true,
+		fg = "#21b510"
   },
 	Visual = {
-		fg = "black",
-		bg = "orange"
+		reverse = true,
+		bold = true
+	},
+	Directory = {
+		underline = true
 	}
 }
 

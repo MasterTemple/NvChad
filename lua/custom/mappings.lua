@@ -19,28 +19,67 @@ M.general = {
 		['l'] = {
 			function()
 				if vim.b.table_mode_active == 1 then 
-					vim.cmd('normal! f|2l')
+					vim.fn.feedkeys('f|2l', 'n')
 				else
-					vim.cmd('normal! l')  
+					vim.fn.feedkeys('l', 'n')
 				end
 			end,
 			"Table move right"
 	 	},
-		-- table movement
 		['h'] = {
 			function()
 				if vim.b.table_mode_active == 1 then 
-					vim.cmd('normal! 2F|2l')
+					vim.fn.feedkeys('2F|2l', 'n')
 				else
-					vim.cmd('normal! h')  
+					vim.fn.feedkeys('h', 'n')
 				end
 			end,
 			"Table move right"
 	 	},
-		-- 
-		-- ["<leader>tm"] = { ":lua require(\"table-mode\").toggle()<CR>", "New window"},
-		-- ["<Tab>"] = { ":Telescope buffers<CR>", "Find Buffers", opts = { nowait = true } },
+		['o'] = {
+			function()
+				if vim.b.table_mode_active == 1 then 
+					vim.fn.feedkeys('o| ', 'n')
+				else
+					vim.fn.feedkeys('o', 'n')
+				end
+			end,
+			"Table new row below"
+	 	},
+		['O'] = {
+			function()
+				if vim.b.table_mode_active == 1 then 
+					vim.fn.feedkeys('O| ', 'n')
+				else
+					vim.fn.feedkeys('O', 'n')
+				end
+			end,
+			"Table new row above"
+	 	},
   },
+	i = {
+		-- table movement
+		['<tab>'] = {
+			function()
+				if vim.b.table_mode_active == 1 then 
+					vim.fn.feedkeys(' | ', 'n')
+				else
+					vim.fn.feedkeys('	', 'n')
+				end
+			end,
+			"Next cell"
+	 	},
+		-- ['<CR>'] = {
+		-- 	function()
+		-- 		if vim.b.table_mode_active == 1 then 
+		-- 			vim.fn.feedkeys(' | <CR>| ', 'n')
+		-- 		else
+		-- 			vim.fn.feedkeys('<CR>', 'n')
+		-- 		end
+		-- 	end,
+		-- 	"Next cell on new line"
+	 -- 	},
+	}
 }
 
 
